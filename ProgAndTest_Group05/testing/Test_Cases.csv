@@ -1,0 +1,9 @@
+Test ID,Feature,Precondition,Steps,Expected Result,Priority
+TC01,Dashboard,Application is running,Open /,Dashboard title and loan summary are visible,High
+TC02,Catalog search,Application is running,Open /books?q=Atomic,Atomic Habits appears in results,High
+TC03,No search results,Application is running,Open /books?q=not-a-real-book,Empty-state message is shown,Medium
+TC04,Borrow available copy,Atomic Habits has available copies,Submit Borrow for Atomic Habits,Success message and availability decreases by one,High
+TC05,Borrow unavailable copy,The Midnight Library has zero available copies,Attempt to borrow it,Borrow is rejected and no new loan is created,High
+TC06,Return loan,At least one loan exists,Submit return action,Success message and returned book stock is restored,High
+TC07,Responsive layout,Application is running,Open dashboard at 360px viewport,No horizontal page overflow,Medium
+TC08,Service search,Unit test environment,Run mvn test,Seeded books and title search tests pass,High

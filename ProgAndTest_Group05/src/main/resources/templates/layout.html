@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title th:text="${page} + ' | Northbridge Public Library'">Northbridge Public Library</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header class="topbar"><div class="brand"><span class="logo">📚</span><span>Northbridge Public Library<small>Library Management System · Group 05</small></span></div><div>Sarah Mitchell <span class="role">Librarian</span></div></header>
+<div class="layout"><aside class="sidebar"><nav><a href="/" th:classappend="${page == 'Dashboard'} ? 'active'">📊 Dashboard</a><a href="/books" th:classappend="${page == 'Book search'} ? 'active'">🔍 Book search</a><a href="/">📤 Borrow book</a><a href="/">📥 Return book</a></nav></aside>
+<main class="main"><p class="crumb">Workspace › <span th:text="${page}">Dashboard</span></p><div th:if="${message}" class="notice" th:text="${message}"></div><div th:replace="~{::content}"></div></main></div>
+</body></html>

@@ -1,0 +1,8 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: content}">
+<section>
+  <div class="heading"><div><h1>Dashboard</h1><p>Today's library operations overview</p></div><a class="btn" href="/books">Search catalog</a></div>
+  <div class="grid4"><article class="card"><span>Available copies</span><strong th:text="${available}">0</strong></article><article class="card"><span>Active loans</span><strong th:text="${#lists.size(loans)}">0</strong></article><article class="card"><span>Overdue loans</span><strong th:text="${overdue}">0</strong></article><article class="card"><span>Active readers</span><strong>3</strong></article></div>
+  <section class="card mt"><h2>Recent loans</h2><div class="table-wrap"><table><thead><tr><th>Book</th><th>Reader</th><th>Card</th><th>Due</th><th>Status</th></tr></thead><tbody><tr th:each="loan : ${loans}"><td th:text="${loan.book}"></td><td th:text="${loan.reader}"></td><td th:text="${loan.card}"></td><td th:text="${loan.due}"></td><td><span class="badge" th:text="${loan.status}"></span></td></tr></tbody></table></div><form method="post" action="/return"><button class="btn secondary">Confirm return of oldest loan</button></form></section>
+</section>
+</html>

@@ -1,0 +1,8 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: content}">
+<section>
+<div class="heading"><div><h1>Book search</h1><p>Search books in the Northbridge catalog.</p></div></div>
+<div class="card"><form class="toolbar" method="get" action="/books"><input name="q" placeholder="Title, author, or category" th:value="${q}"><button class="btn">Search</button></form>
+<div class="table-wrap"><table><thead><tr><th>Title / Author</th><th>Category</th><th>Year</th><th>Availability</th><th>Shelf</th><th></th></tr></thead><tbody><tr th:each="book : ${books}"><td><b th:text="${book.title}"></b><br><small th:text="${book.author}"></small></td><td th:text="${book.category}"></td><td th:text="${book.year}"></td><td th:text="${book.available} + ' available'"></td><td th:text="${book.shelf}"></td><td><form method="post" action="/borrow"><input type="hidden" name="bookId" th:value="${book.id}"><button class="btn small" th:disabled="${book.available == 0}">Borrow</button></form></td></tr><tr th:if="${#lists.isEmpty(books)}"><td colspan="6">No matching books.</td></tr></tbody></table></div></div>
+</section>
+</html>
